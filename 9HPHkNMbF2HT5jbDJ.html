@@ -1,0 +1,708 @@
+<html><head><base href="https://example.com">
+<title>&#x9ed1;&#x6697;AI&#x5bfc;&#x822a;</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+/* Keeping previous styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.main-container {
+  padding: 40px;
+}
+
+.category-section {
+  margin-bottom: 40px;
+}
+
+.category-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.sites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.site-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 15px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.site-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+}
+
+.site-info {
+  flex: 1;
+}
+
+.site-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.site-desc {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #4a9eff;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.site-card {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * 0.1s);
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.site-header {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.site-subtitle {
+    display: none;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s;
+}
+
+.site-logo:hover {
+  filter: brightness(1.2);
+  transform: scale(1.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes logoMorph {
+  0%, 100% {
+    d: path("M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z");
+  }
+  25% {
+    d: path("M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z");
+  }
+  50% {
+    d: path("M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z");
+  }
+  75% {
+    d: path("M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z");
+  }
+}
+
+.site-logo path:first-of-type {
+  animation: logoMorph 10s infinite;
+}
+</style>
+</head>
+<body>
+<div class="main-container">
+    <div class="header-section">
+        <svg class="site-logo" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffffff"/>
+                    <stop offset="100%" style="stop-color:#cccccc"/> 
+                </linearGradient>
+            </defs>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="url(#logoGradient)"/>
+        </svg>
+        <div class="header-content">
+            <h1 class="site-header">&#x9ed1;&#x6697;AI&#x5bfc;&#x822a;</h1>
+        </div>
+    </div>
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none"/>
+                <path d="M2 12h20" stroke="currentColor"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x793e;&#x4ea4;&#x7f51;&#x7edc;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.facebook.com" class="site-card" style="--delay: 1">
+                <div class="site-icon">FB</div>
+                <div class="site-info">
+                    <div class="site-name">Facebook</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x793e;&#x4ea4;&#x7f51;&#x7edc;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.instagram.com" class="site-card" style="--delay: 2">
+                <div class="site-icon">IG</div>
+                <div class="site-info">
+                    <div class="site-name">Instagram</div>
+                    <div class="site-desc">&#x7167;&#x7247;&#x5206;&#x4eab;&#x793e;&#x4ea4;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.twitter.com" class="site-card" style="--delay: 3">
+                <div class="site-icon">X</div>
+                <div class="site-info">
+                    <div class="site-name">Twitter</div>
+                    <div class="site-desc">&#x5373;&#x65f6;&#x65b0;&#x95fb;&#x548c;&#x793e;&#x4ea4;&#x7f51;&#x7edc;</div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com" class="site-card" style="--delay: 4">
+                <div class="site-icon">IN</div>
+                <div class="site-info">
+                    <div class="site-name">LinkedIn</div>
+                    <div class="site-desc">&#x804c;&#x4e1a;&#x793e;&#x4ea4;&#x7f51;&#x7edc;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.pinterest.com" class="site-card" style="--delay: 5">
+                <div class="site-icon">PT</div>
+                <div class="site-info">
+                    <div class="site-name">Pinterest</div>
+                    <div class="site-desc">&#x56fe;&#x7247;&#x5206;&#x4eab;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.reddit.com" class="site-card" style="--delay: 53">
+                <div class="site-icon">RD</div>
+                <div class="site-info">
+                    <div class="site-name">Reddit</div>
+                    <div class="site-desc">&#x793e;&#x4ea4;&#x65b0;&#x95fb;&#x548c;&#x8ba8;&#x8bba;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M9 3v18" stroke="currentColor"/>
+                <path d="M15 3v18" stroke="currentColor"/>
+                <path d="M3 9h18" stroke="currentColor"/>
+                <path d="M3 15h18" stroke="currentColor"/>
+            </svg>
+            <h2 class="category-title">&#x641c;&#x7d22;&#x5f15;&#x64ce;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.google.com" class="site-card" style="--delay: 6">
+                <div class="site-icon">G</div>
+                <div class="site-info">
+                    <div class="site-name">Google</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x641c;&#x7d22;&#x5f15;&#x64ce;</div>
+                </div>
+            </a>
+            <a href="https://www.bing.com" class="site-card" style="--delay: 7">
+                <div class="site-icon">B</div>
+                <div class="site-info">
+                    <div class="site-name">Bing</div>
+                    <div class="site-desc">&#x5fae;&#x8f6f;&#x51fa;&#x54c1;&#x7684;&#x641c;&#x7d22;&#x5f15;&#x64ce;</div>
+                </div>
+            </a>
+            <a href="https://www.baidu.com" class="site-card" style="--delay: 8">
+                <div class="site-icon">&#x767e;</div>
+                <div class="site-info">
+                    <div class="site-name">&#x767e;&#x5ea6;</div>
+                    <div class="site-desc">&#x4e2d;&#x56fd;&#x6700;&#x5927;&#x7684;&#x641c;&#x7d22;&#x5f15;&#x64ce;</div>
+                </div>
+            </a>
+            <a href="https://www.duckduckgo.com" class="site-card" style="--delay: 52">
+                <div class="site-icon">DD</div>
+                <div class="site-info">
+                    <div class="site-name">DuckDuckGo</div>
+                    <div class="site-desc">&#x9690;&#x79c1;&#x4fdd;&#x62a4;&#x641c;&#x7d22;&#x5f15;&#x64ce;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" fill="none"/>
+                <path d="M12 2l10 7-10 5-10-5 10-7z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x89c6;&#x9891;&#x7f51;&#x7ad9;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.youtube.com" class="site-card" style="--delay: 9">
+                <div class="site-icon">YT</div>
+                <div class="site-info">
+                    <div class="site-name">YouTube</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x89c6;&#x9891;&#x5206;&#x4eab;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.netflix.com" class="site-card" style="--delay: 10">
+                <div class="site-icon">NF</div>
+                <div class="site-info">
+                    <div class="site-name">Netflix</div>
+                    <div class="site-desc">&#x6d41;&#x884c;&#x89c6;&#x9891;&#x6d41;&#x5a92;&#x4f53;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+            <a href="https://www.bilibili.com" class="site-card" style="--delay: 11">
+                <div class="site-icon">B</div>
+                <div class="site-info">
+                    <div class="site-name">&#x54d4;&#x54e9;&#x54d4;&#x54e9;</div>
+                    <div class="site-desc">&#x4e2d;&#x56fd;&#x6700;&#x5927;&#x7684;&#x89c6;&#x9891;&#x7f51;&#x7ad9;</div>
+                </div>
+            </a>
+            <a href="https://www.tiktok.com" class="site-card" style="--delay: 12">
+                <div class="site-icon">TK</div>
+                <div class="site-info">
+                    <div class="site-name">TikTok</div>
+                    <div class="site-desc">&#x77ed;&#x89c6;&#x9891;&#x793e;&#x4ea4;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.twitch.tv" class="site-card" style="--delay: 54">
+                <div class="site-icon">TW</div>
+                <div class="site-info">
+                    <div class="site-name">Twitch</div>
+                    <div class="site-desc">&#x6e38;&#x620f;&#x76f4;&#x64ad;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M20 7h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x5728;&#x7ebf;&#x8d2d;&#x7269;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.amazon.com" class="site-card" style="--delay: 13">
+                <div class="site-icon">AM</div>
+                <div class="site-info">
+                    <div class="site-name">Amazon</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x7535;&#x5546;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.taobao.com" class="site-card" style="--delay: 14">
+                <div class="site-icon">&#x6dd8;</div>
+                <div class="site-info">
+                    <div class="site-name">&#x6dd8;&#x5b9d;</div>
+                    <div class="site-desc">&#x4e2d;&#x56fd;&#x6700;&#x5927;&#x7684;&#x7535;&#x5546;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.jd.com" class="site-card" style="--delay: 15">
+                <div class="site-icon">&#x4eac;</div>
+                <div class="site-info">
+                    <div class="site-name">&#x4eac;&#x4e1c;</div>
+                    <div class="site-desc">&#x7efc;&#x5408;&#x6027;&#x7535;&#x5546;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.ebay.com" class="site-card" style="--delay: 16">
+                <div class="site-icon">EB</div>
+                <div class="site-info">
+                    <div class="site-name">eBay</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x5728;&#x7ebf;&#x62cd;&#x5356;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M12 15l-4-4h8l-4 4z" stroke="currentColor" fill="none"/>
+                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x6559;&#x80b2;&#x5b66;&#x4e60;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.coursera.org" class="site-card" style="--delay: 17">
+                <div class="site-icon">CO</div>
+                <div class="site-info">
+                    <div class="site-name">Coursera</div>
+                    <div class="site-desc">&#x5728;&#x7ebf;&#x5b66;&#x4e60;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.udemy.com" class="site-card" style="--delay: 18">
+                <div class="site-icon">UD</div>
+                <div class="site-info">
+                    <div class="site-name">Udemy</div>
+                    <div class="site-desc">&#x5728;&#x7ebf;&#x8bfe;&#x7a0b;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.edx.org" class="site-card" style="--delay: 19">
+                <div class="site-icon">EDX</div>
+                <div class="site-info">
+                    <div class="site-name">edX</div>
+                    <div class="site-desc">&#x9ad8;&#x7aef;&#x5728;&#x7ebf;&#x5b66;&#x4e60;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M20 7h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x751f;&#x4ea7;&#x529b;&#x5de5;&#x5177;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.notion.so" class="site-card" style="--delay: 20">
+                <div class="site-icon">NT</div>
+                <div class="site-info">
+                    <div class="site-name">Notion</div>
+                    <div class="site-desc">&#x591a;&#x529f;&#x80fd;&#x7b14;&#x8bb0;&#x548c;&#x534f;&#x4f5c;&#x5de5;&#x5177;</div>
+                </div>
+            </a>
+            <a href="https://www.trello.com" class="site-card" style="--delay: 21">
+                <div class="site-icon">TL</div>
+                <div class="site-info">
+                    <div class="site-name">Trello</div>
+                    <div class="site-desc">&#x9879;&#x76ee;&#x7ba1;&#x7406;&#x548c;&#x534f;&#x4f5c;&#x5de5;&#x5177;</div>
+                </div>
+            </a>
+            <a href="https://www.asana.com" class="site-card" style="--delay: 22">
+                <div class="site-icon">AS</div>
+                <div class="site-info">
+                    <div class="site-name">Asana</div>
+                    <div class="site-desc">&#x5de5;&#x4f5c;&#x7ba1;&#x7406;&#x548c;&#x534f;&#x4f5c;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x4e91;&#x5b58;&#x50a8;&#x670d;&#x52a1;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.dropbox.com" class="site-card" style="--delay: 25">
+                <div class="site-icon">DB</div>
+                <div class="site-info">
+                    <div class="site-name">Dropbox</div>
+                    <div class="site-desc">&#x4e91;&#x5b58;&#x50a8;&#x548c;&#x6587;&#x4ef6;&#x5171;&#x4eab;</div>
+                </div>
+            </a>
+            <a href="https://www.google.com/drive" class="site-card" style="--delay: 26">
+                <div class="site-icon">GD</div>
+                <div class="site-info">
+                    <div class="site-name">Google Drive</div>
+                    <div class="site-desc">&#x8c37;&#x6b4c;&#x4e91;&#x5b58;&#x50a8;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+            <a href="https://www.microsoft.com/zh-cn/microsoft-365/online-storage/one-drive" class="site-card" style="--delay: 27">
+                <div class="site-icon">OD</div>
+                <div class="site-info">
+                    <div class="site-name">OneDrive</div>
+                    <div class="site-desc">&#x5fae;&#x8f6f;&#x4e91;&#x5b58;&#x50a8;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M12 15l-4-4h8l-4 4z" stroke="currentColor" fill="none"/>
+                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x5f00;&#x53d1;&#x5de5;&#x5177;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://github.com" class="site-card" style="--delay: 30">
+                <div class="site-icon">GH</div>
+                <div class="site-info">
+                    <div class="site-name">GitHub</div>
+                    <div class="site-desc">&#x4ee3;&#x7801;&#x6258;&#x7ba1;&#x548c;&#x534f;&#x4f5c;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.stackoverflow.com" class="site-card" style="--delay: 31">
+                <div class="site-icon">SO</div>
+                <div class="site-info">
+                    <div class="site-name">Stack Overflow</div>
+                    <div class="site-desc">&#x7a0b;&#x5e8f;&#x5458;&#x95ee;&#x7b54;&#x793e;&#x533a;</div>
+                </div>
+            </a>
+            <a href="https://codepen.io" class="site-card" style="--delay: 32">
+                <div class="site-icon">CP</div>
+                <div class="site-info">
+                    <div class="site-name">CodePen</div>
+                    <div class="site-desc">&#x4ee3;&#x7801;&#x5c55;&#x793a;&#x548c;&#x5206;&#x4eab;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x65b0;&#x95fb;&#x8d44;&#x8baf;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://news.google.com" class="site-card" style="--delay: 35">
+                <div class="site-icon">GN</div>
+                <div class="site-info">
+                    <div class="site-name">Google News</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x65b0;&#x95fb;&#x805a;&#x5408;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.bbc.com/news" class="site-card" style="--delay: 36">
+                <div class="site-icon">BB</div>
+                <div class="site-info">
+                    <div class="site-name">BBC News</div>
+                    <div class="site-desc">&#x82f1;&#x56fd;&#x5e7f;&#x64ad;&#x516c;&#x53f8;&#x65b0;&#x95fb;</div>
+                </div>
+            </a>
+            <a href="https://www.cnn.com" class="site-card" style="--delay: 37">
+                <div class="site-icon">CN</div>
+                <div class="site-info">
+                    <div class="site-name">CNN</div>
+                    <div class="site-desc">&#x7f8e;&#x56fd;&#x6709;&#x7ebf;&#x65b0;&#x95fb;&#x7f51;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M5 3l14 9-14 9V3z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x97f3;&#x4e50;&#x5e73;&#x53f0;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.spotify.com" class="site-card" style="--delay: 40">
+                <div class="site-icon">SP</div>
+                <div class="site-info">
+                    <div class="site-name">Spotify</div>
+                    <div class="site-desc">&#x5168;&#x7403;&#x97f3;&#x4e50;&#x6d41;&#x5a92;&#x4f53;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+            <a href="https://www.apple.com/music" class="site-card" style="--delay: 41">
+                <div class="site-icon">AM</div>
+                <div class="site-info">
+                    <div class="site-name">Apple Music</div>
+                    <div class="site-desc">&#x82f9;&#x679c;&#x97f3;&#x4e50;&#x6d41;&#x5a92;&#x4f53;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+            <a href="https://music.163.com" class="site-card" style="--delay: 42">
+                <div class="site-icon">NE</div>
+                <div class="site-info">
+                    <div class="site-name">&#x7f51;&#x6613;&#x4e91;&#x97f3;&#x4e50;</div>
+                    <div class="site-desc">&#x4e2d;&#x56fd;&#x97f3;&#x4e50;&#x6d41;&#x5a92;&#x4f53;&#x670d;&#x52a1;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M12 15l-4-4h8l-4 4z" stroke="currentColor" fill="none"/>
+                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x8bbe;&#x8ba1;&#x5de5;&#x5177;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.behance.net" class="site-card" style="--delay: 43">
+                <div class="site-icon">BE</div>
+                <div class="site-info">
+                    <div class="site-name">Behance</div>
+                    <div class="site-desc">&#x8bbe;&#x8ba1;&#x4f5c;&#x54c1;&#x5c55;&#x793a;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.dribbble.com" class="site-card" style="--delay: 44">
+                <div class="site-icon">DR</div>
+                <div class="site-info">
+                    <div class="site-name">Dribbble</div>
+                    <div class="site-desc">&#x8bbe;&#x8ba1;&#x5e08;&#x793e;&#x533a;&#x548c;&#x4f5c;&#x54c1;&#x5c55;&#x793a;</div>
+                </div>
+            </a>
+            <a href="https://www.artstation.com" class="site-card" style="--delay: 45">
+                <div class="site-icon">AR</div>
+                <div class="site-info">
+                    <div class="site-name">ArtStation</div>
+                    <div class="site-desc">&#x827a;&#x672f;&#x4f5c;&#x54c1;&#x5c55;&#x793a;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M8 2v4M16 2v4M4 8h16" stroke="currentColor"/>
+            </svg>
+            <h2 class="category-title">&#x529e;&#x516c;&#x8f6f;&#x4ef6;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.microsoft.com/microsoft-365" class="site-card" style="--delay: 46">
+                <div class="site-icon">365</div>
+                <div class="site-info">
+                    <div class="site-name">Microsoft 365</div>
+                    <div class="site-desc">&#x5fae;&#x8f6f;&#x529e;&#x516c;&#x8f6f;&#x4ef6;&#x5957;&#x4ef6;</div>
+                </div>
+            </a>
+            <a href="https://workspace.google.com" class="site-card" style="--delay: 47">
+                <div class="site-icon">GW</div>
+                <div class="site-info">
+                    <div class="site-name">Google Workspace</div>
+                    <div class="site-desc">&#x8c37;&#x6b4c;&#x529e;&#x516c;&#x8f6f;&#x4ef6;&#x5957;&#x4ef6;</div>
+                </div>
+            </a>
+            <a href="https://www.zoom.us" class="site-card" style="--delay: 48">
+                <div class="site-icon">ZM</div>
+                <div class="site-info">
+                    <div class="site-name">Zoom</div>
+                    <div class="site-desc">&#x89c6;&#x9891;&#x4f1a;&#x8bae;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24">
+                <path d="M21 12l-8-10v6H3l8 10v-6h10z" stroke="currentColor" fill="none"/>
+            </svg>
+            <h2 class="category-title">&#x65c5;&#x884c;&#x51fa;&#x884c;</h2>
+        </div>
+        <div class="sites-grid">
+            <a href="https://www.booking.com" class="site-card" style="--delay: 49">
+                <div class="site-icon">BK</div>
+                <div class="site-info">
+                    <div class="site-name">Booking</div>
+                    <div class="site-desc">&#x9152;&#x5e97;&#x9884;&#x8ba2;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.airbnb.com" class="site-card" style="--delay: 50">
+                <div class="site-icon">AB</div>
+                <div class="site-info">
+                    <div class="site-name">Airbnb</div>
+                    <div class="site-desc">&#x77ed;&#x79df;&#x623f;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+            <a href="https://www.tripadvisor.com" class="site-card" style="--delay: 51">
+                <div class="site-icon">TA</div>
+                <div class="site-info">
+                    <div class="site-name">TripAdvisor</div>
+                    <div class="site-desc">&#x65c5;&#x884c;&#x63a8;&#x8350;&#x548c;&#x8bc4;&#x8bba;&#x5e73;&#x53f0;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>document.addEventListener('mousemove', e => {
+  const cards = document.querySelectorAll('.site-card');
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const cardX = rect.left + rect.width / 2;
+    const cardY = rect.top + rect.height / 2;
+    const angleX = (mouseY - cardY) * 0.001;
+    const angleY = (mouseX - cardX) * -0.001;
+    const distance = Math.sqrt(Math.pow(mouseX - cardX, 2) + Math.pow(mouseY - cardY, 2));
+    const maxDistance = 300;
+    const intensity = Math.max(0, 1 - distance / maxDistance);
+    card.style.transform = `
+            perspective(1000px)
+            rotateX(${angleX}deg)
+            rotateY(${angleY}deg)
+            translateY(${-intensity * 3}px)
+        `;
+  });
+});
+const updateLogoColors = () => {
+  const logo = document.querySelector('.site-logo');
+  const gradientStops = logo.querySelectorAll('stop');
+  const time = Date.now() % 10000 / 10000;
+  
+  if (time < 0.25) {
+    // Chrome theme
+    gradientStops[0].style.stopColor = '#4285f4';
+    gradientStops[1].style.stopColor = '#34a853';
+  } else if (time < 0.5) {
+    // GitHub theme
+    gradientStops[0].style.stopColor = '#ffffff';
+    gradientStops[1].style.stopColor = '#333333';
+  } else if (time < 0.75) {
+    // LinkedIn theme
+    gradientStops[0].style.stopColor = '#0077b5';
+    gradientStops[1].style.stopColor = '#0a66c2';
+  } else {
+    // Twitter theme
+    gradientStops[0].style.stopColor = '#1da1f2';
+    gradientStops[1].style.stopColor = '#14171a';
+  }
+};
+setInterval(updateLogoColors, 100);</script>
+
+</body></html>
